@@ -1,5 +1,6 @@
 import numpy as np
 import time
+import json
 def heapify(arr, n, i):
     largest = i
     l = 2 * i + 1
@@ -135,7 +136,6 @@ Mergesort = []
 Quicksort = []
 Built_in_Python_Sort = []
 Numpy_Sort = []
-Built_in_Cpp_Sort = []
 for array in arr:
     n = len(array)
     arr1 = array.copy()
@@ -174,5 +174,18 @@ for array in arr:
     Numpy_Sort.append((end_time - start_time) / 1000000)
     print("NumPy Sort --- %s milliseconds ---" % ((end_time - start_time) / 1000000))
     print(" ")
-
 # Output:
+with open("Heapsort.json", "w", encoding="utf-8") as f:
+    json.dump(Heapsort, f, ensure_ascii=False, indent=4)
+
+with open("Mergesort.json", "w", encoding="utf-8") as f:
+    json.dump(Mergesort, f, ensure_ascii=False, indent=4)
+
+with open("Quicksort.json", "w", encoding="utf-8") as f:
+    json.dump(Quicksort, f, ensure_ascii=False, indent=4)
+
+with open("Built_in_Python_Sort.json", "w", encoding="utf-8") as f:
+    json.dump(Built_in_Python_Sort, f, ensure_ascii=False, indent=4)
+
+with open("Numpy_Sort.json", "w", encoding="utf-8") as f:
+    json.dump(Numpy_Sort, f, ensure_ascii=False, indent=4)

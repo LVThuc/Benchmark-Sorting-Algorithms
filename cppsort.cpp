@@ -1,10 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-int random(int a, int b)
-{
-    return a + rng() % (b - a + 1);
-}
 vector<int> arr;
 int median_of_three(int low, int mid, int high) {
     if (arr[low] < arr[mid]) {
@@ -49,14 +44,32 @@ void quickSort(int low, int high) {
         quickSort(pi + 1, high);
     }
 }
+vector<int> test[10];
 int main()
 {
+    auto ff = std::chrono::high_resolution_clock::now();
     freopen("input.inp", "r", stdin);
-    int n;
-    cin >> n;
-    arr.resize(n);
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-    quickSort(0, n - 1);
+    for(int i = 0 ; i < 10 ; i++)
+    {
+        for(int j = 0 ;j < 1e6 ; j ++)
+        {
+            int x;
+            cin>> x;
+            test[i].push_back(x);
+        }
+    }
+    ofstream f("built_inc++.json");
+    f<<"[\n";
+    for(int i = 0 ; i < 10 ; i++)
+    {
+        arr = test[i];
+        auto start = std::chrono::high_resolution_clock::now();
+        sort(arr.begin(), arr.end());
+        auto finish = std::chrono::high_resolution_clock::now();
+        f <<fixed << setprecision(5) << (double) std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count()/(double)1000000.00 << ",\n";
+    }
+    f<<"]";
+    f.close();
+    auto fin =  std::chrono::high_resolution_clock::now();
+    return 0;
 }
-
