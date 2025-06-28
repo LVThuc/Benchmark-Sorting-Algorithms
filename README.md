@@ -118,10 +118,12 @@ $$
 - If the joint state $|\pi\rangle$ is a **product state**, meaning the systems are independent, it can be written as:
 
 $$
-|\pi\rangle = |\phi\rangle \otimes |\psi\rangle
+|\pi\rangle = |\phi\rangle \otimes |\psi\rangle 
 $$
 
 - An independence system is a product system as it's can be formed from two individual systems. If not independence, we call it correlation systems.
 - A compound system with more than two individual systems are similar to compound system of two, 
-#### 
+#### Measuring Compound Probabilistic System
+- Measurement of whole compound system is straightforward like single system where states collapsed into one classical state in the states set of system according to the probability of the state.
+- Partial measurement of a compound system, 
 
