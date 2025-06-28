@@ -2,7 +2,7 @@
 
 ## Classical information
 
-### Cartesians product
+### Cartesians product and classical compound system
 - Let $X, Y$ be systems with classical states sets: $\Sigma , \Gamma$ .
 - The classical states set of the compound system $(X,Y)$ is the Cartesian product of $\Sigma$ and $\Gamma$, defined as
 
@@ -17,7 +17,52 @@ $$
 \Sigma \times \Gamma = \\{ (0, A), (0, B), (0, C), (0, D), (1, A), (1, B), (1, C), (1, D) \\}
 $$
 
-### Measuring probabilistic states
+This description generalizes to more than two systems in a natural way.
+Suppose $X_1, \dots, X_n$ are systems having classical state sets $\Sigma_1, \dots, \Sigma_n$, respectively.
+
+The classical state set of the n-tuple $(X_1, \dots, X_n)$, viewed as a single compound system, is the Cartesian product
+
+$$
+\Sigma_1 \times \dots \times \Sigma_n = \\{ ((a_1, \dots, a_n)) : a_1 \in \Sigma_1, \dots, a_n \in \Sigma_n \\}
+$$
+
+##### Example
+
+If $\Sigma_1 = \Sigma_2 = \Sigma_3 = \\{0, 1\\}$, then the classical state set of $(X_1, X_2, X_3)$ is
+
+$$
+\Sigma_1 \times \Sigma_2 \times \Sigma_3 = \\{ (0, 0, 0), (0, 0, 1), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1) \\}
+$$
+
+$$\Sigma \times \Gamma = \\{ (a,b) : a \in \Sigma \text{ and } b \in \Gamma \\}.$$
+
+It is often convenient to write a classical state of the form $(a_{n-1} \dots a_0)$ as a string $a_{n-1} \dots a_0$ for the sake of brevity, especially in the case of alphabet(english alphabet, binary alphabet, hexa alphabet). For example, suppose that $X_0, \dots, X_9$ are bits.
+
+$$\Sigma_0 = \Sigma_1 = \dots = \Sigma_9 = \\{0,1\\}$$
+
+There are $2^{10} = 1024$ classical states of system $(X_9, \dots, X_0)$
+
+$$\Sigma_9 \times \Sigma_8 \times \dots \times \Sigma_0 = \\{0,1\\}^{10}$$
+
+Written as strings, these classical states look like this:
+
+$0000000000$ 
+
+$0000000001$
+
+$0000000010$
+
+$0000000011$
+
+$0000000100$
+
+$\vdots$
+
+$1111111111$
+
+For the classical state $0000000110$, for instance, we see that $X_1$ and $X_2$ are in the state $1$, while all other systems are in the state $0$.
+
+### Probabilistic compound states
 - A measurement on a probabilistic state collapses it into a specific deterministic state from $\Sigma$, chosen according to the given probabilities. 
 - The post-measurement state is represented by a standard basis vector (one entry 1, others 0).
 - We denote these basis states using ket notation like this $\lvert a \rangle$, $\lvert b \rangle$.
