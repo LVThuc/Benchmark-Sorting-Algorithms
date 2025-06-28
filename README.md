@@ -63,255 +63,65 @@ $1111111111$
 For the classical state $0000000110$, for instance, we see that $X_1$ and $X_2$ are in the state $1$, while all other systems are in the state $0$.
 
 ### Probabilistic compound states
-- A measurement on a probabilistic state collapses it into a specific deterministic state from $\Sigma$, chosen according to the given probabilities. 
-- The post-measurement state is represented by a standard basis vector (one entry 1, others 0).
-- We denote these basis states using ket notation like this $\lvert a \rangle$, $\lvert b \rangle$.
-
-##### Example
-For the coin flip system $X$ with initial state 
+- Just like classical states, a compound system of two or more probabilistic system are viewed as one single probabilistic system as the result of cartesian product of individual systems.
+- Probabilistic system come along with a probability vector which describe the probability of each entries of the states set.
+- To express the probabilistic state of a compound system $(X, Y)$ using probability vectors in Dirac notation, it is written as:
 
 $$
+\sum_{(a,b)\in\Sigma\times\Gamma} p_{ab}|ab\rangle.             
+$$
+- Because each arrangement of individual systems and their states results in a different compound system, we typically follow a convention for ordering them: The order of the system is determined by its placement in the operation. The order of states within a system is lexicographical(alphabetical).
+##### Example
+- $X$ and $Y$ are two bits, $\Sigma = \Gamma = \\{0,1\\}$, the probabilistic states $(X,Y)$ is:
+  
+Pr((X,Y)=(0,0)) = 0.5
+
+Pr((X,Y)=(0,1)) = 0
+
+Pr((X,Y)=(1,0)) = 0
+
+Pr((X,Y)=(1,1)) = 0.5
+- The probability vector:
+  
+$$
 p = \begin{bmatrix} 0.5 \\
+0 \\
+0 \\
 0.5 \end{bmatrix}
 $$
 
-- Measurement yields:
+#### Independence of two(and more) systems
+- Two individual systems $X$, $Y$ forming a compound system $(X,Y)$ are independent if:
+
+- The condition for independence is met if there exist two probability vectors for the individual systems:
+
+$$|\phi\rangle = \sum_{a\in\Sigma} q_a|a\rangle \quad \text{and} \quad |\psi\rangle = \sum_{b\in\Gamma} r_b|b\rangle,$$
+
+- The joint probability $p_{ab}$ can be factored as the product of the individual probabilities $q_a$ and $r_b$ for all $a \in \Sigma$ and $b \in \Gamma$:
+
+$$p_{ab} = q_a r_b$$
+
+- Independence of systems can be concisely expressed through the **tensor product**. If a compound probabilistic state, $|\pi\rangle$, can be formed by taking the tensor product of individual probability vectors, $|\phi\rangle$ for system $X$ and $|\psi\rangle$ for system $Y$, then these systems are independent.
+
+- Given individual probability vectors:
 
 $$
-\begin{cases}
-\lvert \text{head} \rangle = \begin{bmatrix} 1 \\
-0 \end{bmatrix} & \text{with probability } 0.5 \\
-\lvert \text{tail} \rangle = \begin{bmatrix} 0 \\
-1 \end{bmatrix} & \text{with probability } 0.5
-\end{cases}
-$$
-  
-- The initial probabilistic state can be expressed as:
- 
-$$
-0.5 \lvert \text{head} \rangle + 0.5 \lvert \text{tail} \rangle
-$$
-  
-After the measurement, the state either becomes $\lvert \text{head} \rangle$ or $\lvert \text{tail} \rangle$, and is no longer a probabilistic state.
- 
-### Classical Operations
-
-#### Deterministic Operations
-- For a classical system with states $\Sigma$, a deterministic operation is a function 
-$f: \Sigma \to \Sigma$, represented by matrices $M$ where:
-
-$$
-M \lvert a \rangle = \lvert f(a) \rangle \quad \forall a \in \Sigma
+|\phi\rangle = \sum_{a\in\Sigma} \alpha_a|a\rangle \quad \text{and} \quad |\psi\rangle = \sum_{b\in\Gamma} \beta_b|b\rangle
 $$
 
-- Any operation $M$ can be expressed as:
-
-- with $\langle a \rvert$ is the row vector of a state, we have
+- The tensor product is defined as the compound state:
 
 $$
-M = \sum_{a \in \Sigma} \lvert f(a) \rangle \langle a \rvert
-$$
-- That is, mapping from a state into other states from $\Sigma$
-- These matrices have:
-  1. Exactly one 1 per column
-  2. All other entries 0
-
-**Example ($\Sigma = \{0,1\}$):**
-- Identity:
-  
-$$
-  M_2 = \begin{bmatrix} 1 & 0 \\
-  0 & 1 \end{bmatrix} \quad (f(a)=a)
-$$
-  
-- NOT gate:
-  
-$$
-  M_3 = \begin{bmatrix} 0 & 1 \\
-   1 & 0 \end{bmatrix} \quad (f(a)=\neg a)
-$$
-  
-- Constant 0:
-  
-$$
-  M_1 = \begin{bmatrix} 1 & 1 \\
-  0 & 0 \end{bmatrix} \quad (f(a)=0)
-$$
-  
-- Constant 1:
-
-$$
-  M_4 = \begin{bmatrix} 0 & 0 \\
-   1 & 1 \end{bmatrix} \quad (f(a)=1)
+|\phi\rangle \otimes |\psi\rangle = \sum_{(a,b)\in\Sigma\times\Gamma} \alpha_a \beta_b |ab\rangle
 $$
 
-#### Probabilistic Operations
-- Represented by **stochastic matrices**:
-  1. All entries are real non-negative number
-  2. Column sums $= 1$ (each column is a probability vector)
-
-**Example:**
+- If the joint state $|\pi\rangle$ is a **product state**, meaning the systems are independent, it can be written as:
 
 $$
-\begin{bmatrix} 1 & 0.5 \\
-0 & 0.5 \end{bmatrix}
+|\pi\rangle = |\phi\rangle \otimes |\psi\rangle
 $$
 
-- Input $0$: Output stays $0$
-- Input $1$: Output becomes $0$ or $1$ with 50% probability each
+- An independence system is a product system as it's can be formed from two individual systems. If not independence, we call it correlation systems.
+- A compound system with more than two individual systems are similar to compound system of two, 
+#### 
 
-#### Composition of Operations
-$$
-\text{Apply } M_1 \text{ then } M_2 \equiv M_2 M_1
-$$
-
-The composition is the same for three or more operations, the operations are sorted by order of applying from right to left.
-
-## Quantum Information
-
-### Quantum State Vectors
-- Represented by complex vectors:
-  
-$$
-\lvert \psi \rangle = \begin{bmatrix}\alpha_1 \\
-\vdots \\
-\alpha_n\end{bmatrix}
-$$
-
-- The sum of the absolute values squared of the entries of a quantum state vector is $1$.
-- Equivalent to  $\lVert \lvert \psi \rangle \rVert = \sqrt{\sum|\alpha_k|^2} = 1$ (Euclidean norm)
-- Thus quantum state vectors are unit vectors.
-
-**Qubit:**
-- Qubit is a quantum system whose classical states set is $\{0,1\}$
-- Classical states vectors of classical bit are also quantum state vectors of a qubit: 
-
-$$
-\lvert 0 \rangle = \begin{bmatrix}1\\
-0\end{bmatrix}, \lvert 1 \rangle = \begin{bmatrix}0\\
-1\end{bmatrix}
-$$
-
-- Qubit can also be a state that's superposition between 0 and 1 which are Superposition states:
-
-$$
-\lvert + \rangle = \frac{1}{\sqrt{2}}\lvert 0 \rangle + \frac{1}{\sqrt{2}}\lvert 1 \rangle
-$$
-
-$$
-\lvert - \rangle = \frac{1}{\sqrt{2}}\lvert 0 \rangle - \frac{1}{\sqrt{2}}\lvert 1 \rangle
-$$
-
-### Measurement (Born Rule)
-When measuring state $\lvert \psi \rangle$:
-- The quantum state collapses into a deterministic state with each classical state of the system appearing with probability equal to the **absolute value squared** of the entry in the quantum state vector corresponding to that classical state:
-
-$$
-P(\text{outcome } a) = |\langle a \lvert \psi \rangle|^2 = |\alpha_a|^2
-$$
-
-- **Absolute value squared** behaves like the probability of each state, thus the sum of absolute value squares must be 1 for every quantum state vector.
-
-**Example:**
-- For $\lvert + \rangle$:
-
-$$
-P(0) = |\langle 0 \lvert + \rangle|^2 = \frac{1}{2}, \quad P(1) = |\langle 1 \lvert + \rangle|^2 = \frac{1}{2}
-$$
-
-- For $\lvert - \rangle$:
-
-$$
-P(0) = |\langle 0 \lvert - \rangle|^2 = \frac{1}{2}, \quad P(1) = |\langle 1 \lvert - \rangle|^2 = \frac{1}{2}
-$$
-
-### Unitary Operations
-- As we see, $\lvert + \rangle$ and $\lvert - \rangle$ behave identically when measuring, thus we have to resort to operations to differentiate them.
-- Operations on quantum states are represented by **unitary matrices**, thus it's called unitary operations.
-
-- **Unitary matrix** are square matrices with complex entries that satisfy:
-
-$$
-UU^\dagger = U^\dagger U = I
-$$
-
-- $U^\dagger = \overline{U^T} = U^{-1}$ are *conjugate transpose* of $U$ and we can conclude that it's equal to its inverse if it satisfies the above equation.
-
-- The multiplication of a unitary matrix with a vector preserves the norm of the vector, thus preserving the quantum status.
-- It can be understood as a mapping operation from one quantum state to another.
-
-**Examples of Unitary Matrices on a Qubit:**
-1. Pauli matrices:
-
-$$
-X = \begin{bmatrix}0 & 1 \\
-1 & 0\end{bmatrix}, \quad Z = \begin{bmatrix}1 & 0 \\
-0 & -1\end{bmatrix}
-$$
-
-2. Hadamard:
-
-$$
-H = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & 1 \\
-1 & -1\end{bmatrix}
-$$
-
-Hadamard operation is the way to distinguish $\lvert + \rangle$ and $\lvert - \rangle$ as:
-
-$$
-H \lvert + \rangle = \lvert 0 \rangle, \quad H \lvert - \rangle = \lvert 1 \rangle
-$$
-
-3. Phase gates:
-
-$$
-S = \begin{bmatrix}1 & 0 \\
-0 & i\end{bmatrix}, \quad T = \begin{bmatrix}1 & 0 \\
-0 & e^{i\pi/4}\end{bmatrix}
-$$
-
-#### Compositions of qubit unitary operations
-- Similar to compositions of classical operations, applying multiple operations on a quantum state is also represented as matrix multiplication from right to left.
-
-**Example:**
-
-Apply $H$, then $S$, then $H$ again:
-
-
-$$ 
-R = 
-H S H = 
-\begin{bmatrix}
-  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
-  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
-  \end{bmatrix}
-  \begin{bmatrix}
-  1 & 0 \\
-  0 & i
-  \end{bmatrix}
-  \begin{bmatrix}
-  \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
-  \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
-  \end{bmatrix} =
-  \begin{bmatrix}
-  \frac{1+i}{2} & \frac{1-i}{2} \\
-  \frac{1-i}{2} & \frac{1+i}{2}
-  \end{bmatrix}
-$$
-
-
-This example is interesting because if we square it:
-
-$$
-R^2 = 
-\begin{bmatrix}
-\frac{1+i}{2} & \frac{1-i}{2} \\
-\frac{1-i}{2} & \frac{1+i}{2}
-\end{bmatrix}^2=
-\begin{bmatrix}
-0 & 1 \\
-1 & 0 
-\end{bmatrix}
-$$
-
-Thus $R = HSH$ is also called the square root of the NOT operation.
