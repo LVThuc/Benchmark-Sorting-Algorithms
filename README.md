@@ -1,28 +1,21 @@
-# Single-System
+# Multiple-System
 
 ## Classical information
 
-### Classical states and probability vectors
-- A system $X$ is a classical system that contains information.
-- Let $\Sigma$ be a finite and nonempty set representing all possible states of $X$.
-- Each state in $\Sigma$ can occur with a certain probability, resulting in a **probabilistic state**.
-- A probabilistic state can be represented by a **column vector** $p$ with:
-  1. Non-negative entries.
-  2. Entries' sum equal to 1.
-- Such vectors allow us to define **operations** on the system as **matrix-vector multiplication**.
+### Cartesians product
+- Let $X, Y$ be systems with classical states sets: $\Sigma , \Gamma$ .
+- The classical states set of the compound system $(X,Y)$ is the Cartesian product of $\Sigma$ and $\Gamma$, defined as
 
+$$
+\Sigma \times \Gamma = \\{ (a, b) : a \in \Sigma \text{ and } b \in \Gamma \\}
+$$
+- In another word, it create a new system $(X,Y)$ where the classical states which contains all distinc pair of states, where the first state picked from $\Sigma$, second state picked from $\Gamma$. Each pair $\(\sigma,\gamma\)$ represent a state where $X$ is in state $\sigma$ and $Y$ is in state $\gamma$.
 ##### Example
-- Let $X$ be the result of flipping a coin.
-- $\Sigma = \{\text{head, tail}\}$.
-
-- The probabilistic state is:
+- If $\Sigma = \\{0, 1\\}$ and $\Gamma = \\{ A, B, C, D \\}$, then
 
 $$
-p = \begin{bmatrix} 0.5 \\
-0.5 \end{bmatrix}
+\Sigma \times \Gamma = \\{ (0, A), (0, B), (0, C), (0, D), (1, A), (1, B), (1, C), (1, D) \\}
 $$
-
-where the components correspond to $\text{head}$ and $\text{tail}$ respectively.
 
 ### Measuring probabilistic states
 - A measurement on a probabilistic state collapses it into a specific deterministic state from $\Sigma$, chosen according to the given probabilities. 
