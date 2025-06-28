@@ -125,5 +125,35 @@ $$
 - A compound system with more than two individual systems are similar to compound system of two, 
 #### Measuring Compound Probabilistic System
 - Measurement of whole compound system is straightforward like single system where states collapsed into one classical state in the states set of system according to the probability of the state.
-- Partial measurement of a compound system, 
+- Partial measurement of a compound system, let's have $(X,Y)$ as a compound system of states $\Sigma, \Gamma$,
+- The probability to observe a particular classical state $\alpha \in \Sigma$ when just $X$ is measured is
 
+$$
+\mathrm{Pr}(X = a) = \sum_{b \in \Gamma} \mathrm{Pr}((X, Y) = (a, b))
+$$
+
+- There may still exist uncertainty about the classical state of $Y$, depending on the outcome of the measurement:
+
+$$
+\mathrm{Pr}(Y = b \mid X = a) = \frac{\mathrm{Pr}((X, Y) = (a, b))}{\mathrm{Pr}(X = a)}
+$$
+- On the compound probability vector, the measurement reduced the system into another system conditioned on the outcome of $X=a$
+
+$$
+\Ket{\pi_a} = \frac{\sum_{b \in \Gamma} p_{ab} \Ket{b}}{\sum_{c \in \Gamma} p_{ac}}
+$$
+
+###### Example
+$X$ is $\Sigma = \\{0, 1\\}$, $Y$ is $\Gamma = \\{1, 2, 3\\}$, the probabilistic state of $(X, Y)$ is
+
+$$|\psi\rangle = \frac{1}{2}|0, 1\rangle + \frac{1}{12}|0, 3\rangle + \frac{1}{12}|1, 1\rangle + \frac{1}{6}|1, 2\rangle + \frac{1}{6}|1, 3\rangle.$$
+or
+$$
+p = \begin{bmatrix} frac{1}{2} \\
+0 \\
+frac{1}{12} \\
+frac{1}{12} \\
+frac{1}{6}\\
+frac{1}{6}
+end{bmatrix}
+$$
