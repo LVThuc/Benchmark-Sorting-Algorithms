@@ -149,11 +149,58 @@ $X$ is $\Sigma = \\{0, 1\\}$, $Y$ is $\Gamma = \\{1, 2, 3\\}$, the probabilistic
 $$|\psi\rangle = \frac{1}{2}|0, 1\rangle + \frac{1}{12}|0, 3\rangle + \frac{1}{12}|1, 1\rangle + \frac{1}{6}|1, 2\rangle + \frac{1}{6}|1, 3\rangle.$$
 or
 $$
-p = \begin{bmatrix} frac{1}{2} \\
+p = \begin{bmatrix} 
+\frac{1}{2} \\
 0 \\
-frac{1}{12} \\
-frac{1}{12} \\
-frac{1}{6}\\
-frac{1}{6}
-end{bmatrix}
+\frac{1}{12} \\
+\frac{1}{12} \\
+\frac{1}{6}\\
+\frac{1}{6}
+\end{bmatrix}
+$$
+- We have
+
+$$
+\Pr(X=0) = \frac{1}{2} + \frac{1}{12} = \frac{7}{12}
+$$
+
+$$
+\Pr(X=1) = \frac{1}{12} + \frac{1}{6} + \frac{1}{6} = \frac{5}{12}
+$$
+
+- Conditioned on X being 0, the probabilistic state of Y becomes
+
+$$
+\frac{\frac{1}{2}|1\rangle + \frac{1}{12}|3\rangle}{\frac{7}{12}} = \frac{6}{7}|1\rangle + \frac{1}{7}|3\rangle,
+$$
+
+- and conditioned on the measurement of X being 1:
+
+$$
+\frac{\frac{1}{12}|1\rangle + \frac{1}{6}|2\rangle + \frac{1}{6}|3\rangle}{\frac{5}{12}} = \frac{1}{5}|1\rangle + \frac{2}{5}|2\rangle + \frac{2}{5}|3\rangle.
+$$
+#### Operations on compound probabilistic system
+- Operation on a compound probabilistic system $(X,Y)$ can be represent as stochastic matrices as of single systems.
+
+$$
+\begin{pmatrix}
+1 \frac{1}{2} \frac{1}{2} \0 \\
+0 \0 \0 \0 \\
+0 \0 \0 \0 \\
+0 \frac{1}{2} \frac{1}{2} \1
+\end{pmatrix}
+= \frac{1}{2}
+\begin{pmatrix}
+1 \1 \0 \0 \\
+0 \0 \0 \0 \\
+0 \0 \0 \0 \\
+0 \0 \1 \1
+\end{pmatrix}
++ \frac{1}{2}
+\begin{pmatrix}
+1 \0 \1 \0 \\
+0 \0 \0 \0 \\
+0 \0 \0 \0 \\
+0 \1 \0 \1
+\end{pmatrix}.
 $$
