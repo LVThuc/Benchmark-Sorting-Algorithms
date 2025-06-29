@@ -184,23 +184,277 @@ $$
 
 $$
 \begin{pmatrix}
-1 \frac{1}{2} \frac{1}{2} \0 \\
-0 \0 \0 \0 \\
-0 \0 \0 \0 \\
-0 \frac{1}{2} \frac{1}{2} \1
+1 & \frac{1}{2} & \frac{1}{2} & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & \frac{1}{2} & \frac{1}{2} & 1
 \end{pmatrix}
 = \frac{1}{2}
 \begin{pmatrix}
-1 \1 \0 \0 \\
-0 \0 \0 \0 \\
-0 \0 \0 \0 \\
-0 \0 \1 \1
+1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1
 \end{pmatrix}
-+ \frac{1}{2}
+\+ \frac{1}{2}
 \begin{pmatrix}
-1 \0 \1 \0 \\
-0 \0 \0 \0 \\
-0 \0 \0 \0 \\
-0 \1 \0 \1
-\end{pmatrix}.
+1 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1
+\end{pmatrix}
+$$
+- The matrix above is the operations on two bits $(X,Y)$ with probability $\frac{1}{2}$ to set $X$ to $Y$ and vice versa.
+- Compound operations on a compound system $(X,Y)$ from two independence operation on independent system are defined as the tensor product of the stochastic matrix.
+
+
+
+$$
+\begin{pmatrix}
+\alpha_{11} & \cdots & \alpha_{1m} \\
+\vdots & \ddots & \vdots \\
+\alpha_{m1} & \cdots & \alpha_{mm}
+\end{pmatrix}
+\otimes
+\begin{pmatrix}
+\beta_{11} & \cdots & \beta_{1k} \\
+\vdots & \ddots & \vdots \\
+\beta_{k1} & \cdots & \beta_{kk}
+\end{pmatrix}
+$$
+
+$$
+\=
+\begin{pmatrix}
+\alpha_{11}\beta_{11} & \cdots & \alpha_{11}\beta_{1k} & \cdots & \alpha_{1m}\beta_{11} & \cdots & \alpha_{1m}\beta_{1k} \\
+\vdots & \ddots & \vdots & & \vdots & \ddots & \vdots \\
+\alpha_{11}\beta_{k1} & \cdots & \alpha_{11}\beta_{kk} & \cdots & \alpha_{1m}\beta_{k1} & \cdots & \alpha_{1m}\beta_{kk} \\
+\vdots & & \vdots & \ddots & \vdots & & \vdots \\
+\alpha_{m1}\beta_{11} & \cdots & \alpha_{m1}\beta_{1k} & \cdots & \alpha_{mm}\beta_{11} & \cdots & \alpha_{mm}\beta_{1k} \\
+\vdots & \ddots & \vdots & & \vdots & \ddots & \vdots \\
+\alpha_{m1}\beta_{k1} & \cdots & \alpha_{m1}\beta_{kk} & \cdots & \alpha_{mm}\beta_{k1} & \cdots & \alpha_{mm}\beta_{kk}
+\end{pmatrix}
+$$
+##### Example
+
+$$
+\begin{pmatrix}
+1 & \frac{1}{2} \\
+0 & \frac{1}{2}
+\end{pmatrix}
+$$
+
+Suppose this operation is performed on a bit X, and a NOT operation is (independently) performed on a second bit Y.
+The combined operation on the compound system $(X, Y)$ then has this matrix representation:
+
+$$
+\begin{pmatrix}
+1 & \frac{1}{2} \\
+0 & \frac{1}{2}
+\end{pmatrix}
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}
+\=
+\begin{pmatrix}
+0 & 1 & 0 & \frac{1}{2} \\
+1 & 0 & \frac{1}{2} & 0 \\
+0 & 0 & 0 & \frac{1}{2} \\
+0 & 0 & \frac{1}{2} & 0
+\end{pmatrix}
+$$
+## Quantum Informations
+- Quantum states vector are alike to probabilistic states vector aside from the complex entries.
+- Tensor product of Quantum states vector are also Quantum states vector and are called product states. This is because Euclidean Norm are multiplicative respectively to tensor product. $(1*1=1)$
+- Quantum states that are not product states are a compound system with correlated individual systems, these systems are entangled with each other.
+##### Example
+This is an entangled system.
+
+$$
+\frac{1}{\sqrt{2}} |00\rangle + \frac{1}{\sqrt{2}} |11\rangle
+$$
+### Some familiar states
+$$
+|\phi^+\rangle = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle
+$$
+
+$$
+|\phi^-\rangle = \frac{1}{\sqrt{2}}|00\rangle - \frac{1}{\sqrt{2}}|11\rangle
+$$
+
+$$
+|\psi^+\rangle = \frac{1}{\sqrt{2}}|01\rangle + \frac{1}{\sqrt{2}}|10\rangle
+$$
+
+$$
+|\psi^-\rangle = \frac{1}{\sqrt{2}}|01\rangle - \frac{1}{\sqrt{2}}|10\rangle
+$$
+
+The states above are called Bell states
+The content of the images shows the definitions of the four Bell states and the set notation for collecting them. Here's how to write them out:
+
+The four Bell states are defined as:
+The collection of all four Bell states is:
+
+$$
+\\{|\phi^+\rangle, |\phi^-\rangle, |\psi^+\rangle, |\psi^-\rangle\\}
+$$
+
+The above set is known as the Bell basis. Every quantum states vectors of two qubit can be represented as a linear combination of Bell basis' vectors.
+
+- GHZ state
+
+$$
+\frac{1}{\sqrt{2}}|000\rangle + \frac{1}{\sqrt{2}}|111\rangle
+$$
+
+- W state
+
+$$
+\frac{1}{\sqrt{3}}|001\rangle + \frac{1}{\sqrt{3}}|010\rangle + \frac{1}{\sqrt{3}}|100\rangle
+$$-
+
+### Measurements of quantum states
+- Measuring the entire compound system of quantum states collapses it into deterministic states, with probabilities equal to the squares of the corresponding entries.
+- Given a compound quantum states $(X,Y)$ with $(\Sigma, \Gamma)$ as classical states set.
+  
+$$
+|\psi\rangle = \sum_{(a,b) \in \Sigma \times \Gamma} \alpha_{ab} |ab\rangle
+$$
+
+- The probability for each outcome a of measuring independently the system $X$ is
+
+$$
+\sum_{b \in \Gamma} |\langle ab | \psi \rangle|^2 = \sum_{b \in \Gamma} |\alpha_{ab}|^2
+$$
+
+We can first express the vector $$|\psi\rangle$$ as
+
+$$
+|\psi\rangle = \sum_{a \in \Sigma} |a\rangle \otimes |\phi_a\rangle,
+$$
+
+where
+
+$$
+|\phi_a\rangle = \sum_{b \in \Gamma} \alpha_{ab} |b\rangle.
+$$
+
+The probability for the standard basis measurement of $X$ to give each outcome $a$ is as follows:
+
+$$
+\sum_{b \in \Gamma} |\alpha_{ab}|^2 = \| |\phi_a\rangle \|^2.
+$$
+
+And, as a result of the standard basis measurement of $X$ giving the outcome $a$, the quantum state of the pair $(X, Y)$ together becomes:
+
+$$
+|a\rangle \otimes \frac{|\phi_a\rangle}{\|||\phi_a\rangle\||}
+$$
+###### Example
+As an example, consider the state of two qubits \((X,Y)\) from the beginning of the section:
+
+$$
+|\psi\rangle=\frac{1}{\sqrt{2}}|00\rangle-\frac{1}{\sqrt{6}}|01\rangle+\frac{i}{\sqrt{6}}|10\rangle+\frac{1}{\sqrt{6}}|11\rangle.
+$$
+
+To understand what happens when the first system \(X\) is measured, we begin by writing
+
+$$
+|\psi\rangle=|0\rangle\otimes\left(\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{6}}|1\rangle\right)+|1\rangle\otimes\left(\frac{i}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle\right).
+$$
+
+We now see, based on the description above, that the probability for the measurement to result in the outcome 0 is
+
+$$
+\left\|\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{6}}|1\rangle\right\|^{2}=\frac{1}{2}+\frac{1}{6}=\frac{2}{3},
+$$
+
+in which case the state of \((X,Y)\) becomes
+
+$$
+|0\rangle\otimes\frac{\frac{1}{\sqrt{2}}|0\rangle-\frac{1}{\sqrt{6}}|1\rangle}{\sqrt{\frac{2}{3}}}=|0\rangle\otimes\left(\frac{\sqrt{3}}{2}|0\rangle-\frac{1}{2}|1\rangle\right);
+$$
+
+and the probability for the measurement to result in the outcome 1 is
+
+$$
+\left\|\frac{i}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle\right\|^{2}=\frac{1}{6}+\frac{1}{6}=\frac{1}{3},
+$$
+
+in which case the state of \((X,Y)\) becomes
+
+$$
+|1\rangle\otimes\frac{\frac{i}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle}{\sqrt{\frac{1}{3}}}=|1\rangle\otimes\left(\frac{i}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right).
+$$
+
+---
+
+The same technique, used in a symmetric way, describes what happens if the second system \(Y\) is measured rather than the first. This time we rewrite the vector \(|\psi\rangle\) as
+
+$$
+|\psi\rangle=\left(\frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{6}}|1\rangle\right)\otimes|0\rangle+\left(-\frac{1}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle\right)\otimes|1\rangle.
+$$
+
+The probability that the measurement of \(Y\) gives the outcome 0 is
+
+$$
+\left\|\frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{6}}|1\rangle\right\|^{2}=\frac{1}{2}+\frac{1}{6}=\frac{2}{3},
+$$
+
+in which case the state of \((X,Y)\) becomes
+
+$$
+\frac{\frac{1}{\sqrt{2}}|0\rangle+\frac{i}{\sqrt{6}}|1\rangle}{\sqrt{\frac{2}{3}}}\otimes|0\rangle=\left(\frac{\sqrt{3}}{2}|0\rangle+\frac{i}{2}|1\rangle\right)\otimes|0\rangle;
+$$
+
+and the probability that the measurement outcome is 1 is
+
+$$
+\left\|-\frac{1}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle\right\|^{2}=\frac{1}{6}+\frac{1}{6}=\frac{1}{3},
+$$
+
+in which case the state of \((X,Y)\) becomes
+
+$$
+\frac{-\frac{1}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle}{\sqrt{\frac{1}{3}}}\otimes|1\rangle=\left(-\frac{1}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right)\otimes|1\rangle.
+$$
+### Unitary operations
+The combined action of independent unitary operations $\(U_1, \ldots, U_n\)$ applied to systems $\(X_1, \ldots, X_n\)$ is represented by their tensor product:
+
+$$
+U_1 \otimes \cdots \otimes U_n
+$$
+
+For example, applying a unitary \(V\) to system \(Y\) while leaving system \(X\) unchanged is represented by:
+
+$$
+I \otimes V
+$$
+
+where $\(I\)$ is the identity matrix.
+##### Example
+For qubits $X$ and $Y$, applying a Hadamard gate to $X$ while leaving $Y$ unchanged is represented by:
+
+For qubits $X$ and $Y$, applying a Hadamard gate to $X$ while leaving $Y$ unchanged is represented by:
+
+$$
+H \otimes I \= 
+\begin{pmatrix}
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+\end{pmatrix} 
+\otimes 
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\=
+\begin{pmatrix}
+\frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} & 0 \\
+0 & \frac{1}{\sqrt{2}} & 0 & \frac{1}{\sqrt{2}} \\
+\frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} & 0 \\
+0 & \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}}
+\end{pmatrix}
 $$
