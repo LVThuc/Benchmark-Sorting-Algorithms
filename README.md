@@ -389,7 +389,6 @@ $$
 |1\rangle\otimes\frac{\frac{i}{\sqrt{6}}|0\rangle+\frac{1}{\sqrt{6}}|1\rangle}{\sqrt{\frac{1}{3}}}=|1\rangle\otimes\left(\frac{i}{\sqrt{2}}|0\rangle+\frac{1}{\sqrt{2}}|1\rangle\right).
 $$
 
----
 
 The same technique, used in a symmetric way, describes what happens if the second system \(Y\) is measured rather than the first. This time we rewrite the vector \(|\psi\rangle\) as
 
@@ -457,4 +456,81 @@ H \otimes I \=
 \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}} & 0 \\
 0 & \frac{1}{\sqrt{2}} & 0 & -\frac{1}{\sqrt{2}}
 \end{pmatrix}
+$$
+
+Not every unitary operations can be expressed as tensor product of unitary operations.
+##### Example
+
+Suppose that $X$ and $Y$ are systems that share the same classical state set $\Sigma$ . The _swap operation_ on the pair $\( X, Y \)$ exchanges the contents of the two systems:
+
+$$
+\text{SWAP} \, |\phi \otimes \psi\rangle = |\psi \otimes \phi\rangle
+$$
+
+It can be expressed using the Dirac notation as follows:
+
+$$
+\text{SWAP} = \sum_{a, b \in \Sigma} |a\rangle \langle b| \otimes |b\rangle \langle a|
+$$
+
+When $X$ and $Y$ are qubits, we find that the
+
+$$
+\text{SWAP} = \begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+The unitary matrix represent the swap operations can not be expressed as tensor product of unitary matrices.
+
+#### Controlled operations
+Controlled operations on a system $(Q ,R)$ where Q is a control qubit and R is a compound system follow this format:
+
+$$
+CU = \begin{bmatrix}
+I & 0 \\
+0 & U
+\end{bmatrix}
+$$
+
+If Q is 1, the operations $U$ will be applied on the system R, otherwise, nothing change.
+
+##### Example
+Controlled-Not on 2 qubits system.
+
+$$
+\mathrm{CNOT}_Y = \begin{bmatrix}
+I_2 & 0 \\
+0 & \mathrm{NOT}_Y
+\end{bmatrix}
+\=
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+$$
+
+Controlled-Swap on 3 qubits system.
+
+$$
+\mathrm{CSWAP} = \begin{bmatrix}
+I_4 & 0 \\
+0 & \mathrm{SWAP}
+\end{bmatrix}
+\=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 1
+\end{bmatrix}
 $$
